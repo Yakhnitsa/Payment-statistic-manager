@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--Объявление коллекции сообщений-->
+
+    <!--Сообщения главного контроллера-->
+    <bean id="mainControllerMessages" class="java.util.HashMap">
+        <constructor-arg>
+            <map key-type="java.lang.String" value-type="com.yurets_y.payment_statistic.model.util.Message">
+                <entry key="testMessage">
+                    <bean class="com.yurets_y.payment_statistic.model.util.Message">
+                        <property name="alertType" value="INFORMATION"/>
+                        <property name="title" value="Test message title" />
+                        <property name="message" value="Test message text" />
+                        <property name="contentText" value="Test message content text" />
+                    </bean>
+                </entry>
+
+                <entry key="loadURImessage">
+                    <bean class="com.yurets_y.payment_statistic.model.util.Message">
+                        <property name="alertType" value="INFORMATION"/>
+                        <property name="title" value="Загрузка данных" />
+                        <property name="message" value="Загрузка данных по ссылке URI" />
+                        <property name="contentText" value="Загрузка данных по ссылке URI" />
+                    </bean>
+                </entry>
+
+                <entry key="loadURIExceptionMessage">
+                    <bean class="com.yurets_y.payment_statistic.model.util.Message">
+                        <property name="alertType" value="ERROR"/>
+                        <property name="title" value="Ошибка при загрузке данных" />
+                        <property name="message" value="Не удалось загрузить данные по URI" />
+                        <property name="contentText" value="Проверьте URI ссылку" />
+                    </bean>
+                </entry>
+
+                <entry key="deleteDocSuccessMessage">
+                    <bean class="com.yurets_y.payment_statistic.model.util.Message">
+                        <property name="alertType" value="INFORMATION"/>
+                        <property name="title" value="Удаление документов" />
+                        <property name="message" value="Выделенные документы успешно удалены" />
+                        <property name="contentText" value="" />
+                    </bean>
+                </entry>
+
+                <entry key="deleteDocDenyMessage">
+                    <bean class="com.yurets_y.payment_statistic.model.util.Message">
+                        <property name="alertType" value="ERROR"/>
+                        <property name="title" value="Ошибка удаления документов" />
+                        <property name="message" value="Не удалось удалить выбранные документы" />
+                        <property name="contentText" value="Проверьте выбраны ли документы"/>
+                    </bean>
+                </entry>
+
+            </map>
+        </constructor-arg>
+    </bean>
+
+</beans>

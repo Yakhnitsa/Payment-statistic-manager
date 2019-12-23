@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yurets_y.payment_statistic.controller.DocumentTableController">
+    <children>
+        <TableView fx:id="documentTable" prefHeight="445.0" prefWidth="612.0" stylesheets="@../style/style.css" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+            <columns>
+            <TableColumn id="paymentCodeColumn" fx:id="paymentCodeColumn" maxWidth="120.0" styleClass="title-text" text="Код плательщика" />
+                <TableColumn fx:id="docNumberColumn" maxWidth="120.0" text="№ Документа" />
+                <TableColumn fx:id="innerBalanceColumn" maxWidth="120" minWidth="10.0" styleClass="right-alignment" text="Входящий остаток" />
+                <TableColumn fx:id="closingBalanceColumn" maxWidth="120" minWidth="10.0" styleClass="right-alignment" text="Исходящий остаток" />
+                <TableColumn fx:id="totalPaymentColumn" maxWidth="120" minWidth="10.0" styleClass="right-alignment" text="Сумма платежей" />
+                <TableColumn fx:id="fileNameColumn" maxWidth="300.0" text="Файл" />
+            </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+        </TableView>
+    </children>
+</AnchorPane>
