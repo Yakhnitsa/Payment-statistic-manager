@@ -1,4 +1,4 @@
-package com.yurets_y.payment_statistic.entity;
+package com.yurets_y.payment_statistic.model.entity;
 
 import java.util.Date;
 

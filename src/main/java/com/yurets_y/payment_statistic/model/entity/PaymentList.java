@@ -1,7 +1,8 @@
-package com.yurets_y.payment_statistic.entity;
+package com.yurets_y.payment_statistic.model.entity;
 
 import java.util.Date;
 import java.util.List;
+
 
 public class PaymentList {
     private Long id;
@@ -20,6 +21,8 @@ public class PaymentList {
     private long paymentVsTaxes;
 
     private List<PaymentDetails> paymentDetailsList;
+
+    private String backupFileLocation;
 
 
 }
