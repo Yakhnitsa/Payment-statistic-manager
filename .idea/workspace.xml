@@ -7,12 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c60e622a-34b9-42eb-a095-2d3ec9d51c30" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/repository/PaymentListRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/service/PaymentListService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/DocParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/HtmlDocParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TODO.md" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/entity/PaymentDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/entity/PaymentDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/entity/PaymentList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/entity/PaymentList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/entity/PaymentList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/entity/PaymentList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/repository/PaymentListRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/repository/PaymentListRepo.java" afterDir="false" />
     </list>
     <ignored path="Payment statistic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PaymentListRepo.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PaymentListRepo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/repository/PaymentListRepo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+            <state relative-caret-position="238">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -91,22 +90,105 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PaymentListService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/service/PaymentListService.java">
+      <file leaf-file-name="PaymentList.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/entity/PaymentList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="1955">
+              <caret line="127" column="43" lean-forward="true" selection-start-line="127" selection-start-column="43" selection-end-line="127" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#608#609#0" expanded="true" />
+                <element signature="e#637#638#0" expanded="true" />
+                <element signature="e#678#679#0" expanded="true" />
+                <element signature="e#714#715#0" expanded="true" />
+                <element signature="e#743#744#0" expanded="true" />
+                <element signature="e#770#771#0" expanded="true" />
+                <element signature="e#808#809#0" expanded="true" />
+                <element signature="e#840#841#0" expanded="true" />
+                <element signature="e#875#876#0" expanded="true" />
+                <element signature="e#909#910#0" expanded="true" />
+                <element signature="e#960#961#0" expanded="true" />
+                <element signature="e#1006#1007#0" expanded="true" />
+                <element signature="e#1037#1038#0" expanded="true" />
+                <element signature="e#1067#1068#0" expanded="true" />
+                <element signature="e#1110#1111#0" expanded="true" />
+                <element signature="e#1148#1149#0" expanded="true" />
+                <element signature="e#1187#1188#0" expanded="true" />
+                <element signature="e#1224#1225#0" expanded="true" />
+                <element signature="e#1282#1283#0" expanded="true" />
+                <element signature="e#1334#1335#0" expanded="true" />
+                <element signature="e#1373#1374#0" expanded="true" />
+                <element signature="e#1410#1411#0" expanded="true" />
+                <element signature="e#1468#1469#0" expanded="true" />
+                <element signature="e#1520#1521#0" expanded="true" />
+                <element signature="e#1553#1554#0" expanded="true" />
+                <element signature="e#1584#1585#0" expanded="true" />
+                <element signature="e#1630#1631#0" expanded="true" />
+                <element signature="e#1670#1671#0" expanded="true" />
+                <element signature="e#1707#1708#0" expanded="true" />
+                <element signature="e#1742#1743#0" expanded="true" />
+                <element signature="e#1796#1797#0" expanded="true" />
+                <element signature="e#1844#1845#0" expanded="true" />
+                <element signature="e#1883#1884#0" expanded="true" />
+                <element signature="e#1920#1921#0" expanded="true" />
+                <element signature="e#1978#1979#0" expanded="true" />
+                <element signature="e#2030#2031#0" expanded="true" />
+                <element signature="e#2089#2090#0" expanded="true" />
+                <element signature="e#2130#2131#0" expanded="true" />
+                <element signature="e#2307#2308#0" expanded="true" />
+                <element signature="e#2340#2341#0" expanded="true" />
+                <element signature="e#2390#2391#0" expanded="true" />
+                <element signature="e#2434#2435#0" expanded="true" />
+                <element signature="e#2567#2568#0" expanded="true" />
+                <element signature="e#2620#2621#0" expanded="true" />
+                <element signature="e#2670#2671#0" expanded="true" />
+                <element signature="e#2722#2723#0" expanded="true" />
+                <element signature="e#2779#2780#0" expanded="true" />
+                <element signature="e#2840#2841#0" expanded="true" />
+                <element signature="e#2879#2880#0" expanded="true" />
+                <element signature="e#2930#2931#0" expanded="true" />
+                <element signature="e#2999#3000#0" expanded="true" />
+                <element signature="e#3050#3051#0" expanded="true" />
+                <element signature="e#3118#3119#0" expanded="true" />
+                <element signature="e#3168#3169#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PaymentList.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/entity/PaymentList.java">
+      <file leaf-file-name="DocParser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/DocParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+            <state>
+              <caret column="52" lean-forward="true" selection-start-column="52" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DocumentParserBaseHTML.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/DocumentParserBaseHTML.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="37" column="27" lean-forward="true" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HtmlDocParser.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/HtmlDocParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="21" column="40" lean-forward="true" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#772#773#0" expanded="true" />
+                <element signature="e#819#820#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -117,8 +199,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -135,11 +217,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/fxml/RootView.fxml" />
-        <option value="$PROJECT_DIR$/src/main/java/util/FileChooseDialog.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/properties.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/util/PropertiesManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/util/MessageManager.java" />
         <option value="$PROJECT_DIR$/src/main/resources/style/style.css" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/DocumentTableOverview.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/view/DocumentTableController.java" />
@@ -160,14 +237,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/util/PropertiesManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/util/ExceptionHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/elements/PaymentList.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/DocumentParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/controller/DocumentViewer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/saver/DocumentSaver.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/DocumentParserXML.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/util/FilesManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/elements/PaymentListComparator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/DocumentParserMailHTML.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/DocumentParserBaseHTML.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/util/MessageManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/util/Message.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/configuration/BasicConfiguration.java" />
@@ -186,6 +261,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/service/PaymentListService.java" />
         <option value="$PROJECT_DIR$/TODO.md" />
         <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/repository/PaymentListRepo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/HtmlDocParserBasic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/DocumentParserBaseHTML.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/DocumentParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/DocParserAdvanced.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/DocParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/entity/PaymentList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/HtmlDocParser.java" />
       </list>
     </option>
   </component>
@@ -291,6 +373,16 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="payment_statistic" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="parser" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Payment statistic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Payment statistic" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="payment_statistic" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
               <item name="repository" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -314,9 +406,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="CatdeaLogs" />
     </panes>
   </component>
@@ -342,22 +434,23 @@
       <recent name="com.yurets_y.payment_statistic.model.util" />
       <recent name="controller" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Users\Yuriy\Dropbox\Development\intelliJProjects\Payment statistic\src\main\resources\springconfig" />
-      <recent name="D:\Users\Yuriy\Dropbox\Development\intelliJProjects\Payment statistic\target" />
-      <recent name="D:\Users\Yuriy\Dropbox\Development\intelliJProjects\Payment statistic\src\test\resources\xmlFiles" />
-      <recent name="D:\Users\Admin`\Dropbox\Development\intelliJProjects\Payment statistic\src\test\resources\htmlFiles\html_from_mail" />
-      <recent name="C:\Users\Admin\Dropbox\Development\intelliJProjects\Payment statistic\properties" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="model.parser" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Users\Yuriy\Dropbox\Development\intelliJProjects\Payment statistic\src\main\java" />
       <recent name="D:\Users\Yuriy\Dropbox\Development\intelliJProjects\Payment statistic\src\main\com\yurets_y\payment_statistic" />
       <recent name="D:\Users\Admin`\Dropbox\Development\intelliJProjects\Payment statistic\src\test\resources\htmlFiles\xml_from_mail" />
       <recent name="D:\Users\Admin`\Dropbox\Development\intelliJProjects\Payment statistic\src\test\resources\htmlFiles\html_from_ARM" />
       <recent name="C:\Users\Admin\Dropbox\Development\intelliJProjects\Payment statistic\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.yurets_y.payment_statistic.model.parser" />
+      <recent name="model.parser" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Users\Yuriy\Dropbox\Development\intelliJProjects\Payment statistic\src\main\resources\springconfig" />
+      <recent name="D:\Users\Yuriy\Dropbox\Development\intelliJProjects\Payment statistic\target" />
+      <recent name="D:\Users\Yuriy\Dropbox\Development\intelliJProjects\Payment statistic\src\test\resources\xmlFiles" />
+      <recent name="D:\Users\Admin`\Dropbox\Development\intelliJProjects\Payment statistic\src\test\resources\htmlFiles\html_from_mail" />
+      <recent name="C:\Users\Admin\Dropbox\Development\intelliJProjects\Payment statistic\properties" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -686,12 +779,13 @@
       <workItem from="1570521373783" duration="592000" />
       <workItem from="1575884837510" duration="122000" />
       <workItem from="1577098284310" duration="10931000" />
-      <workItem from="1577184339180" duration="3584000" />
+      <workItem from="1577184339180" duration="3980000" />
+      <workItem from="1577375000452" duration="1683000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="185376000" />
+    <option name="totallyTimeSpent" value="187455000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -717,10 +811,10 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.2881356" />
       <window_info anchor="bottom" id="Spring" order="12" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32909605" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32909605" />
       <window_info id="Capture Tool" order="2" />
       <window_info anchor="right" id="Designer" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28389263" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28791946" />
       <window_info anchor="right" id="Database" order="6" weight="0.3295302" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24966443" />
@@ -730,11 +824,11 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39235127" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="7" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32627118" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Duplicate detector" order="15" visible="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32627118" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="Maven" order="9" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -742,30 +836,30 @@
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="FindBugs-IDEA" order="7" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.28267974" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16995448" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="right" id="Designer" order="5" />
       <window_info id="UI Designer" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32996634" />
-      <window_info anchor="right" id="Maven Projects" order="4" weight="0.33990896" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info id="Palette&#9;" order="4" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32996634" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3939394" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info id="Capture Tool" order="2" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Messages" order="9" weight="0.32843137" />
-      <window_info anchor="bottom" id="FindBugs-IDEA" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="4" weight="0.33990896" />
       <window_info id="Favorites" order="5" side_tool="true" />
     </layout-to-restore>
   </component>
@@ -933,15 +1027,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/properties.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target2/Application.class" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/controller/ControllerTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/style/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="215">
@@ -978,13 +1063,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="24" column="75" selection-start-line="24" selection-start-column="75" selection-end-line="24" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/DocumentParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
@@ -1119,20 +1197,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/DocumentParserXML.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="14" column="27" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/DocumentParserBaseHTML.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/saver/DocumentSaverImp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="385">
@@ -1189,16 +1253,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/entity/PaymentList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/service/PaymentListService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1218,10 +1272,130 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/repository/PaymentListRepo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/HtmlDocParserBasic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/DocumentParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/DocParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="52" lean-forward="true" selection-start-column="52" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/DocumentParserXML.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2534">
+          <caret line="22" column="24" lean-forward="true" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/DocumentParserBaseHTML.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="37" column="27" lean-forward="true" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/entity/PaymentList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1955">
+          <caret line="127" column="43" lean-forward="true" selection-start-line="127" selection-start-column="43" selection-end-line="127" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#608#609#0" expanded="true" />
+            <element signature="e#637#638#0" expanded="true" />
+            <element signature="e#678#679#0" expanded="true" />
+            <element signature="e#714#715#0" expanded="true" />
+            <element signature="e#743#744#0" expanded="true" />
+            <element signature="e#770#771#0" expanded="true" />
+            <element signature="e#808#809#0" expanded="true" />
+            <element signature="e#840#841#0" expanded="true" />
+            <element signature="e#875#876#0" expanded="true" />
+            <element signature="e#909#910#0" expanded="true" />
+            <element signature="e#960#961#0" expanded="true" />
+            <element signature="e#1006#1007#0" expanded="true" />
+            <element signature="e#1037#1038#0" expanded="true" />
+            <element signature="e#1067#1068#0" expanded="true" />
+            <element signature="e#1110#1111#0" expanded="true" />
+            <element signature="e#1148#1149#0" expanded="true" />
+            <element signature="e#1187#1188#0" expanded="true" />
+            <element signature="e#1224#1225#0" expanded="true" />
+            <element signature="e#1282#1283#0" expanded="true" />
+            <element signature="e#1334#1335#0" expanded="true" />
+            <element signature="e#1373#1374#0" expanded="true" />
+            <element signature="e#1410#1411#0" expanded="true" />
+            <element signature="e#1468#1469#0" expanded="true" />
+            <element signature="e#1520#1521#0" expanded="true" />
+            <element signature="e#1553#1554#0" expanded="true" />
+            <element signature="e#1584#1585#0" expanded="true" />
+            <element signature="e#1630#1631#0" expanded="true" />
+            <element signature="e#1670#1671#0" expanded="true" />
+            <element signature="e#1707#1708#0" expanded="true" />
+            <element signature="e#1742#1743#0" expanded="true" />
+            <element signature="e#1796#1797#0" expanded="true" />
+            <element signature="e#1844#1845#0" expanded="true" />
+            <element signature="e#1883#1884#0" expanded="true" />
+            <element signature="e#1920#1921#0" expanded="true" />
+            <element signature="e#1978#1979#0" expanded="true" />
+            <element signature="e#2030#2031#0" expanded="true" />
+            <element signature="e#2089#2090#0" expanded="true" />
+            <element signature="e#2130#2131#0" expanded="true" />
+            <element signature="e#2307#2308#0" expanded="true" />
+            <element signature="e#2340#2341#0" expanded="true" />
+            <element signature="e#2390#2391#0" expanded="true" />
+            <element signature="e#2434#2435#0" expanded="true" />
+            <element signature="e#2567#2568#0" expanded="true" />
+            <element signature="e#2620#2621#0" expanded="true" />
+            <element signature="e#2670#2671#0" expanded="true" />
+            <element signature="e#2722#2723#0" expanded="true" />
+            <element signature="e#2779#2780#0" expanded="true" />
+            <element signature="e#2840#2841#0" expanded="true" />
+            <element signature="e#2879#2880#0" expanded="true" />
+            <element signature="e#2930#2931#0" expanded="true" />
+            <element signature="e#2999#3000#0" expanded="true" />
+            <element signature="e#3050#3051#0" expanded="true" />
+            <element signature="e#3118#3119#0" expanded="true" />
+            <element signature="e#3168#3169#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/HtmlDocParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="21" column="40" lean-forward="true" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#772#773#0" expanded="true" />
+            <element signature="e#819#820#0" expanded="true" />
           </folding>
         </state>
       </provider>

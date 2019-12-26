@@ -11,7 +11,7 @@ public interface PaymentListRepo {
     void getById(Long id);
     List<PaymentList> getAll();
 
-    List<PaymentList> getAll(Specification<PaymentList> specification);
+//    List<PaymentList> getAll(Specification<PaymentList> specification);
 
 
 }
