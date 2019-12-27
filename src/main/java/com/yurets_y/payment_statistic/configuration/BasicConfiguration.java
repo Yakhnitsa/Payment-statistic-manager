@@ -4,11 +4,13 @@ package com.yurets_y.payment_statistic.configuration;
 import com.yurets_y.payment_statistic.controller.MainController;
 import com.yurets_y.payment_statistic.controller.RootPanel;
 import com.yurets_y.payment_statistic.controller.TableController;
+import com.yurets_y.payment_statistic.model.parser.DocParser;
 import com.yurets_y.payment_statistic.model.parser.DocumentParser;
 import com.yurets_y.payment_statistic.model.saver.DocumentSaver;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -33,6 +35,9 @@ public class BasicConfiguration {
 
     @Resource(name="documentParserXml")
     DocumentParser xmlParser;
+
+    @Resource(name="htmlDocParser")
+    DocParser docParser;
 
     @Bean
     public RootPanel mainController() throws Exception{
