@@ -12,8 +12,4 @@ public class TestConfig {
             return new HtmlDocParser();
         }
 
-        @Bean
-        public DocumentParser documentParser(){
-            return new DocumentParserBaseHTML();
-        }
 }
