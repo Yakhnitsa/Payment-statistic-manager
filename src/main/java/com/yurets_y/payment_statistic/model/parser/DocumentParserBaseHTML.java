@@ -143,7 +143,6 @@ public class DocumentParserBaseHTML implements DocumentParser {
                 String numb = chartRow.get(0).split(":\\s?-?")[1];
                 return Double.parseDouble(numb.replaceAll(",","."));
             } catch (NumberFormatException|ArrayIndexOutOfBoundsException e) {
-                System.out.println(chartRow);
                 e.printStackTrace();
             }
         }
@@ -157,8 +156,6 @@ public class DocumentParserBaseHTML implements DocumentParser {
                 String numb = chartRow.get(3).split("-")[1];
                 return Double.parseDouble(numb.replaceAll(",","."));
             } catch (ArrayIndexOutOfBoundsException|NumberFormatException e) {
-                System.out.println(chartRow);
-                e.printStackTrace();
             }
         }
 
