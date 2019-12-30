@@ -48,8 +48,29 @@ public class HtmlDocParser implements DocParser {
             if(arrayElementIsMatches(cellList,"Код платника:(\\d*)",1)){
                 paymentList.setPaymentCode(getPaymentCode(cellList));
             }
-//
-            paymentList.setOpeningBalance(getOpeningBalance(cellList));
+
+            String openBalancePattern = "Сальдо на початок.+:.+?(\\d+[,.]\\d+)";
+            if(cellList.size() >1 && cellList.get(1).matches(openBalancePattern)){
+                paymentList.setOpeningBalance(getLongFromPattern(cellList.get(1),openBalancePattern));
+
+            }
+
+            String numberPattern = "-?(\\d+[,.]\\d+)";
+            if(cellList.size() >= 4 && cellList.get(2).matches("Сальдо на кінець.+")){
+                paymentList.setClosingBalance(getLongFromPattern(cellList.get(3),numberPattern));
+            }
+            if(cellList.size() >= 2){
+                if(first.matches("Разом")){
+                    paymentList.setPaymentVsTaxes(getLongFromPattern(cellList.get(1),numberPattern));
+                }
+                else if(first.matches("Всього проведено платежів")){
+                    paymentList.setPayments(getLongFromPattern(cellList.get(1),numberPattern));
+                }else if(first.matches("ПДВ")){
+                    paymentList.setPaymentTaxes(getLongFromPattern(cellList.get(1),numberPattern));
+                }
+
+            }
+
 //            paymentList.setClosingBalance(getClosingBalance(cellList));
 //            paymentList.setTotalCosts(getTotalPayment(cellList));
 //            //фильтр ненужных строк
@@ -150,32 +171,15 @@ public class HtmlDocParser implements DocParser {
         return -1;
     }
 
-    private long getOpeningBalance(List<String> chartRow){
-        if(chartRow.get(0).matches("Сальдо на початок.+")) {
-            String numb = "";
-            try {
-                 numb = chartRow.get(0).split(":\\s?-?")[1];
-                return Long.parseLong(numb.replaceAll(",|.",""));
-            } catch (NumberFormatException|ArrayIndexOutOfBoundsException e) {
-                e.printStackTrace();
-                throw new RuntimeException("Ошибка разбора сальдо на начало периода: " + numb);
-            }
+    private long getLongFromPattern(String matchedString,String stringPattern){
+        Pattern pattern = Pattern.compile(stringPattern);
+        Matcher matcher = pattern.matcher(matchedString);
+        if(matcher.matches()){
+            String numbString = matcher.group(1).replaceAll("[,.]","");
+            return Long.parseLong(numbString);
         }
 
         return -1L;
-    }
-
-    private double getClosingBalance(List<String> chartRow){
-        if(chartRow.size()>=4 && chartRow.get(2).matches("Сальдо на кінець.+")) {
-            try {
-                String numb = chartRow.get(3).split("-")[1];
-                return Double.parseDouble(numb.replaceAll(",","."));
-            } catch (ArrayIndexOutOfBoundsException|NumberFormatException e) {
-            }
-        }
-
-        return -1;
-
     }
 
     private double getTotalPayment(List<String> chartRow){
