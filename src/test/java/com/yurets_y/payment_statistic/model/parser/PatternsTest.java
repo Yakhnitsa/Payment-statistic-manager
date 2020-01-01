@@ -8,6 +8,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @RunWith(SpringRunner.class)
 public class PatternsTest {
     @Test
@@ -22,5 +24,13 @@ public class PatternsTest {
 //            System.out.println(matcher.group(2).replaceAll("[,.]",""));
         }
 
+    }
+    @Test
+    public void simplePatternTest(){
+        String testString1 = "Вiдправлення";
+        String testString2 = "Вiдправлення - мiжнародне сполучення";
+        Pattern pattern = Pattern.compile("Вiдправлення.*");
+        assertThat(pattern.matcher(testString1).matches()).isTrue();
+        assertThat(pattern.matcher(testString2).matches()).isTrue();
     }
 }

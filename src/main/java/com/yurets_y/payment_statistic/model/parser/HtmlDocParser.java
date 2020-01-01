@@ -1,5 +1,6 @@
 package com.yurets_y.payment_statistic.model.parser;
 
+import com.yurets_y.payment_statistic.model.entity.PaymentDetails;
 import com.yurets_y.payment_statistic.model.entity.PaymentList;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -16,6 +17,7 @@ import java.util.regex.Pattern;
 
 @Service("htmlDocParser")
 public class HtmlDocParser implements DocParser {
+    final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy");
     @Override
     public PaymentList parseFromFile(File file) throws IOException {
         Document document = Jsoup.parse(file, "UTF-8");
@@ -37,16 +39,15 @@ public class HtmlDocParser implements DocParser {
             List<String> cellList = parseChartRow(stringIterator.next());
 
             if(cellList.size()<=0){ continue;}
-
             String first = cellList.get(0);
-
             if(first.contains("Перелік")){
                 paymentList.setNumber(getListNumb(first));
                 paymentList.setDate(getListDate(first));
             }
 
-            if(arrayElementIsMatches(cellList,"Код платника:(\\d*)",1)){
-                paymentList.setPaymentCode(getPaymentCode(cellList));
+            String paymentCodePattern = "Код платника:(\\d*)";
+            if(cellList.size() >=2 && cellList.get(1).matches(paymentCodePattern)){
+                paymentList.setPaymentCode((int) getLongFromPattern(cellList.get(1),paymentCodePattern));
             }
 
             String openBalancePattern = "Сальдо на початок.+:.+?(\\d+[,.]\\d+)";
@@ -54,6 +55,11 @@ public class HtmlDocParser implements DocParser {
                 paymentList.setOpeningBalance(getLongFromPattern(cellList.get(1),openBalancePattern));
 
             }
+
+//            if(first.matches("Вiдомостi плати за користування вагонами")){
+//                List<List<String>> table = getTable(stringIterator);
+//                table.forEach(System.out::println);
+//            }
 
             String numberPattern = "-?(\\d+[,.]\\d+)";
             if(cellList.size() >= 4 && cellList.get(2).matches("Сальдо на кінець.+")){
@@ -70,9 +76,8 @@ public class HtmlDocParser implements DocParser {
                 }
 
             }
+            addDepartureList(paymentList,first,stringIterator);
 
-//            paymentList.setClosingBalance(getClosingBalance(cellList));
-//            paymentList.setTotalCosts(getTotalPayment(cellList));
 //            //фильтр ненужных строк
 //            if(listIsContains(exclusionList,first)){
 //                continue;
@@ -101,6 +106,7 @@ public class HtmlDocParser implements DocParser {
         while(cellIterator.hasNext()){
             cellList.add(cellIterator.next().text());
         }
+
         cellIterator = tableString.select("tcol").iterator();
         while(cellIterator.hasNext()){
             cellList.add(cellIterator.next().text());
@@ -182,19 +188,61 @@ public class HtmlDocParser implements DocParser {
         return -1L;
     }
 
-    private double getTotalPayment(List<String> chartRow){
-        if(chartRow.size()>= 2 && chartRow.get(0).matches("Разом")) {
-            return Double.parseDouble(chartRow.get(1).replaceAll(",","."));
+    private List<List<String>> getTable(Iterator<Element> iterator) {
+        List<List<String>> table = new ArrayList<>();
+        List<String> row = parseChartRow(iterator.next());
+        if (row.size() < 1) return table;
+        while (true) {
+            table.add(row);
+            row = parseChartRow(iterator.next());
+            if(row.size()>= 5 && (row.get(4).equals("Всього")||row.get(3).equals("Всього"))) return table;
+            if (row.size() < 1) return table;
+
+        }
+    }
+    private void addDepartureList(PaymentList paymentList,String type,Iterator<Element> iterator){
+        if(type.matches("Вiдправлення.?") || type.matches("Прибуття.*")){
+            List<String> row = parseChartRow(iterator.next());
+            if(row.size() < 1 ) return;
+            while (true) {
+                try{
+                    if (row.get(0).matches("Дата")) {
+                        row = parseChartRow(iterator.next());
+                        continue;
+                    }
+                    if(row.get(4).equals("Всього")) return;
+                    PaymentDetails pd = new PaymentDetails();
+                    pd.setPaymentList(paymentList);
+                    pd.setDate(DATE_FORMAT.parse(row.get(0)));
+                    pd.setStationCode(Integer.parseInt(row.get(1)));
+                    pd.setStationName(row.get(2));
+                    pd.setDocumentNumber(row.get(3));
+
+                }catch (ParseException e){
+                    throw new RuntimeException("Ошибка парсинга строки " + row.toString());
+                }
+
+            }
+        }
+    }
+    static enum TableTypes{
+        DEPARTURE(""),
+        INTERNATIONAL_DEPARTURE(""),
+        ARRIVAL(""),
+        STATEMENTS(""),
+        FUNDED(""),
+        PAYMENTS("");
+        private String name;
+        TableTypes(String name){
+            this.name = name;
         }
 
-        return -1;
+
+        public String getName(){
+            return name;
+        }
     }
-
-    private boolean arrayElementIsMatches(List<String> testedList, String pattern, int index){
-        return testedList.size() > index && testedList.get(index).matches(pattern);
-    }
-
-
-
 
 }
+
+

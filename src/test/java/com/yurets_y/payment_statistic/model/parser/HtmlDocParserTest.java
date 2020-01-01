@@ -74,6 +74,4 @@ public class HtmlDocParserTest {
         return testFile;
     }
 
-
-
 }
