@@ -7,9 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c60e622a-34b9-42eb-a095-2d3ec9d51c30" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/entity/PaymentType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/entity/PaymentList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/entity/PaymentList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/HtmlDocParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/HtmlDocParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/yurets_y/payment_statistic/model/parser/HtmlDocParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yurets_y/payment_statistic/model/parser/HtmlDocParserTest.java" afterDir="false" />
     </list>
@@ -57,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HtmlDocParser.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HtmlDocParser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/HtmlDocParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="289" column="28" selection-start-line="289" selection-start-column="28" selection-end-line="289" selection-end-column="28" />
+            <state relative-caret-position="126">
+              <caret line="323" selection-start-line="323" selection-end-line="323" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;method#exclusionList#0;class#HtmlDocParser#0" />
@@ -69,6 +66,7 @@
                 <element signature="method#getListNumb#0;class#HtmlDocParser#0" />
                 <element signature="method#getPaymentCode#0;class#HtmlDocParser#0" />
                 <element signature="method#getLongFromPattern#0;class#HtmlDocParser#0" />
+                <element signature="method#getStationPayments#0;class#HtmlDocParser#0" />
               </folding>
             </state>
           </provider>
@@ -145,13 +143,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HtmlDocParserTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HtmlDocParserTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/yurets_y/payment_statistic/model/parser/HtmlDocParserTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="126">
               <caret line="53" selection-start-line="53" selection-end-line="53" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#parseOpeningBalanceTest#1;class#HtmlDocParserTest#0" />
+                <element signature="method#totalPaymentAndTaxesTest#0;class#HtmlDocParserTest#0" />
               </folding>
             </state>
           </provider>
@@ -289,10 +289,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/DocumentParserBaseHTML.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/entity/PaymentDetails.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/yurets_y/payment_statistic/model/parser/PatternsTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/yurets_y/payment_statistic/model/parser/HtmlDocParserTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/entity/PaymentType.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/entity/PaymentList.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/HtmlDocParser.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/yurets_y/payment_statistic/model/parser/HtmlDocParserTest.java" />
       </list>
     </option>
   </component>
@@ -928,12 +928,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="HtmlDocParserTest_parseOpeningBalanceTest - 2020.01.02 at 19h 13m 34s.xml">
-      <configuration name="HtmlDocParserTest.parseOpeningBalanceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HtmlDocParserTest_parseOpeningBalanceTest - 2020.01.02 at 19h 14m 03s.xml">
-      <configuration name="HtmlDocParserTest.parseOpeningBalanceTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="HtmlDocParserTest_parseOpeningBalanceTest - 2020.01.02 at 19h 15m 17s.xml">
       <configuration name="HtmlDocParserTest.parseOpeningBalanceTest" configurationId="JUnit" />
     </history-entry>
@@ -958,9 +952,15 @@
     <history-entry file="HtmlDocParserTest_parseOpeningBalanceTest - 2020.01.02 at 20h 25m 39s.xml">
       <configuration name="HtmlDocParserTest.parseOpeningBalanceTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="HtmlDocParserTest_parseOpeningBalanceTest - 2020.01.02 at 20h 28m 02s.xml">
+      <configuration name="HtmlDocParserTest.parseOpeningBalanceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="HtmlDocParserTest_parseOpeningBalanceTest - 2020.01.02 at 20h 34m 29s.xml">
+      <configuration name="HtmlDocParserTest.parseOpeningBalanceTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="236814000" />
+    <option name="totallyTimeSpent" value="237388000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -973,7 +973,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
@@ -1218,12 +1217,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/HtmlDocParser.java</url>
-          <line>125</line>
+          <line>124</line>
           <properties />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/HtmlDocParser.java</url>
-          <line>61</line>
+          <line>60</line>
           <properties />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
@@ -1234,7 +1233,7 @@
           <option name="timeStamp" value="48" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="49" />
+      <option name="time" value="50" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
@@ -1610,20 +1609,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/yurets_y/payment_statistic/model/parser/HtmlDocParserTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yurets_y/payment_statistic/model/parser/HtmlDocParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="289" column="28" selection-start-line="289" selection-start-column="28" selection-end-line="289" selection-end-column="28" />
+        <state relative-caret-position="126">
+          <caret line="323" selection-start-line="323" selection-end-line="323" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;method#exclusionList#0;class#HtmlDocParser#0" />
@@ -1631,6 +1620,19 @@
             <element signature="method#getListNumb#0;class#HtmlDocParser#0" />
             <element signature="method#getPaymentCode#0;class#HtmlDocParser#0" />
             <element signature="method#getLongFromPattern#0;class#HtmlDocParser#0" />
+            <element signature="method#getStationPayments#0;class#HtmlDocParser#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/yurets_y/payment_statistic/model/parser/HtmlDocParserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#parseOpeningBalanceTest#1;class#HtmlDocParserTest#0" />
+            <element signature="method#totalPaymentAndTaxesTest#0;class#HtmlDocParserTest#0" />
           </folding>
         </state>
       </provider>

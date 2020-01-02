@@ -2,7 +2,6 @@ package com.yurets_y.payment_statistic.model.parser;
 
 import com.yurets_y.payment_statistic.model.entity.PaymentDetails;
 import com.yurets_y.payment_statistic.model.entity.PaymentList;
-import com.yurets_y.payment_statistic.model.entity.PaymentType;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -77,7 +76,7 @@ public class HtmlDocParser implements DocParser {
                 }
 
             }
-            List<PaymentDetails> pdList = getPaymentDetailsList(first,stringIterator);
+            List<PaymentDetails> pdList = getPaymentDetailsByType(first,stringIterator);
             paymentList.addAll(pdList);
 
 //            //фильтр ненужных строк
@@ -200,7 +199,7 @@ public class HtmlDocParser implements DocParser {
 
         }
     }
-    private List<PaymentDetails> getPaymentDetailsList(String type,Iterator<Element> iterator){
+    private List<PaymentDetails> getPaymentDetailsByType(String type, Iterator<Element> iterator){
         switch (type){
             case "Вiдправлення":
             case "Вiдправлення - мiжнародне сполучення":
@@ -209,6 +208,8 @@ public class HtmlDocParser implements DocParser {
             case "Вiдомостi плати за користування вагонами":
             case "Накопичувальні карточки":
                 return getStationPayments(type,iterator);
+            case "Платіжні доручення":
+                return getPayments(type,iterator);
             default:
                 return new ArrayList<>();
         }
@@ -300,6 +301,33 @@ public class HtmlDocParser implements DocParser {
                 pd.setTaxPayment(getLongFromPattern(row.get(7),NUMBER_PATTERN));
                 pd.setTotalPayment(getLongFromPattern(row.get(8),NUMBER_PATTERN));
 
+                paymentDetailsList.add(pd);
+                row = parseChartRow(iterator.next());
+
+            }catch (ParseException e){
+                throw new RuntimeException("Ошибка парсинга строки " + row.toString());
+            }
+        }
+        return paymentDetailsList;
+    }
+
+    private List<PaymentDetails> getPayments(String type, Iterator<Element> iterator) {
+        List<String> row = parseChartRow(iterator.next());
+        List<PaymentDetails> paymentDetailsList = new ArrayList<>();
+        if(row.size() < 1 ) return paymentDetailsList;
+        while (iterator.hasNext()) {
+            try{
+                if (row.get(0).matches("Дата")) {
+                    row = parseChartRow(iterator.next());
+                    continue;
+                }
+                if(row.get(2).equals("Всього")) return paymentDetailsList;
+                PaymentDetails pd = new PaymentDetails();
+                pd.setType(type);
+                pd.setDate(DATE_FORMAT.parse(row.get(0)));
+                pd.setDocumentNumber(row.get(1));
+                pd.setPaymentCode(row.get(2));
+                pd.setTotalPayment(getLongFromPattern(row.get(3),NUMBER_PATTERN));
                 paymentDetailsList.add(pd);
                 row = parseChartRow(iterator.next());
 
