@@ -50,6 +50,7 @@ public class HtmlDocParserTest {
     public void parseOpeningBalanceTest() throws IOException {
         File file = getTestFile();
         PaymentList paymentList = docParser.parseFromFile(file);
+
         assertThat(paymentList.getOpeningBalance()).isEqualTo(428764838);
     }
     @Test

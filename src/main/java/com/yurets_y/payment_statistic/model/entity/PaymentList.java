@@ -1,10 +1,7 @@
 package com.yurets_y.payment_statistic.model.entity;
 
 import java.io.File;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 
 
@@ -27,6 +24,9 @@ public class PaymentList {
     private List<PaymentDetails> paymentDetailsList;
 
     private File backupFile;
+    {
+        paymentDetailsList = new ArrayList<>();
+    }
 
     public int getNumber() {
         return number;
@@ -125,6 +125,7 @@ public class PaymentList {
     }
 
     public boolean addDetail(PaymentDetails paymentDetails) {
+        paymentDetails.setPaymentList(this);
         return paymentDetailsList.add(paymentDetails);
     }
 
@@ -133,6 +134,7 @@ public class PaymentList {
     }
 
     public boolean addAll(Collection<? extends PaymentDetails> c) {
+        c.forEach(pl -> pl.setPaymentList(this));
         return paymentDetailsList.addAll(c);
     }
 
