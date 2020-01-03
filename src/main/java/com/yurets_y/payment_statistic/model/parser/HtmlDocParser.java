@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 @Service("htmlDocParser")
 public class HtmlDocParser implements DocParser {
     final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy");
-    final String NUMBER_PATTERN = "-?(\\d+[,.]\\d+)";
+    final String NUMBER_PATTERN = "(-?\\d+[,.]\\d+)";
     @Override
     public PaymentList parseFromFile(File file) throws IOException {
         Document document = Jsoup.parse(file, "UTF-8");
@@ -51,9 +51,9 @@ public class HtmlDocParser implements DocParser {
                 paymentList.setPaymentCode((int) getLongFromPattern(cellList.get(1),paymentCodePattern));
             }
 
-            String openBalancePattern = "Сальдо на початок.+:.+?(\\d+[,.]\\d+)";
+            String openBalancePattern = "Сальдо на початок.+:.+?(-?\\d+[,.]\\d+)";
             if(cellList.size() >1 && cellList.get(1).matches(openBalancePattern)){
-                paymentList.setOpeningBalance(getLongFromPattern(cellList.get(1),openBalancePattern));
+                paymentList.setOpeningBalance(- getLongFromPattern(cellList.get(1),openBalancePattern));
 
             }
 
@@ -63,7 +63,7 @@ public class HtmlDocParser implements DocParser {
 //            }
 
             if(cellList.size() >= 4 && cellList.get(2).matches("Сальдо на кінець.+")){
-                paymentList.setClosingBalance(getLongFromPattern(cellList.get(3),NUMBER_PATTERN));
+                paymentList.setClosingBalance(- getLongFromPattern(cellList.get(3),NUMBER_PATTERN));
             }
             if(cellList.size() >= 2){
                 if(first.matches("Разом")){
@@ -187,26 +187,17 @@ public class HtmlDocParser implements DocParser {
         return -1L;
     }
 
-    private List<List<String>> getTable(Iterator<Element> iterator) {
-        List<List<String>> table = new ArrayList<>();
-        List<String> row = parseChartRow(iterator.next());
-        if (row.size() < 1) return table;
-        while (true) {
-            table.add(row);
-            row = parseChartRow(iterator.next());
-            if(row.size()>= 5 && (row.get(4).equals("Всього")||row.get(3).equals("Всього"))) return table;
-            if (row.size() < 1) return table;
-
-        }
-    }
     private List<PaymentDetails> getPaymentDetailsByType(String type, Iterator<Element> iterator){
         switch (type){
             case "Вiдправлення":
             case "Вiдправлення - мiжнародне сполучення":
             case "Прибуття":
+            case "Прибуття - імпорт":
                 return getTransportPayments(type, iterator);
             case "Вiдомостi плати за користування вагонами":
             case "Накопичувальні карточки":
+            case "Коригування сум нарахованих платежів минулі періоди":
+            case "Коригування сум нарахованих платежів":
                 return getStationPayments(type,iterator);
             case "Платіжні доручення":
                 return getPayments(type,iterator);
@@ -337,6 +328,15 @@ public class HtmlDocParser implements DocParser {
         }
         return paymentDetailsList;
     }
+
+    private boolean checkSumTest(PaymentList paymentList){
+
+
+
+        return true;
+
+    }
+
 }
 
 
