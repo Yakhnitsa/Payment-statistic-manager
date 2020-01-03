@@ -47,10 +47,40 @@ public class HtmlDocParserTest {
         assertThat(paymentList.getPaymentCode()).isEqualTo(8210260);
     }
     @Test
-    public void parseOpeningBalanseTest() throws IOException {
+    public void parseOpeningBalanceTest() throws IOException {
         File file = getTestFile();
         PaymentList paymentList = docParser.parseFromFile(file);
+
         assertThat(paymentList.getOpeningBalance()).isEqualTo(428764838);
+    }
+    @Test
+    public void parseClosingBalanceTest() throws IOException {
+        File file = getTestFile();
+        PaymentList paymentList = docParser.parseFromFile(file);
+        assertThat(paymentList.getClosingBalance()).isEqualTo(376652922);
+    }
+    @Test
+    public void totalPaymentAndTaxesTest() throws IOException {
+        File file = getTestFile();
+        PaymentList paymentList = docParser.parseFromFile(file);
+        assertThat(paymentList.getPayments()).isEqualTo(302370890);
+        assertThat(paymentList.getPaymentTaxes()).isEqualTo(49741026);
+        assertThat(paymentList.getPaymentVsTaxes()).isEqualTo(352111916);
+    }
+
+    @Test
+    public void parseDeparturePaymentTest() throws IOException{
+
+    }
+
+    @Test
+    public void parseStationPaymentTest() throws IOException{
+
+    }
+
+    @Test
+    public void parsePaymentsTest() throws IOException{
+
     }
 
     private File getTestFile(){
@@ -59,7 +89,5 @@ public class HtmlDocParserTest {
 
         return testFile;
     }
-
-
 
 }
