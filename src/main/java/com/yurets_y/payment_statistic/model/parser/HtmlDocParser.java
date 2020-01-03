@@ -79,6 +79,7 @@ public class HtmlDocParser implements DocParser {
             List<PaymentDetails> pdList = getPaymentDetailsByType(first,stringIterator);
             paymentList.addAll(pdList);
 
+
 //            //фильтр ненужных строк
 //            if(listIsContains(exclusionList,first)){
 //                continue;
@@ -95,8 +96,9 @@ public class HtmlDocParser implements DocParser {
 //            }
 //            currentChartData.add(cellList);
         }
-
-
+        if(!checkSumTest(paymentList)){
+            throw new RuntimeException("Ошибка контрольной суммы для перечня " + paymentList.getNumber());
+        }
         return paymentList;
     }
 
@@ -204,37 +206,6 @@ public class HtmlDocParser implements DocParser {
             default:
                 return new ArrayList<>();
         }
-//        if(type.matches("Вiдправлення.*?") || type.matches("Прибуття.*")){
-//            List<String> row = parseChartRow(iterator.next());
-//            if(row.size() < 1 ) return;
-//            while (iterator.hasNext()) {
-//                try{
-//                    if (row.get(0).matches("Дата")) {
-//                        row = parseChartRow(iterator.next());
-//                        continue;
-//                    }
-//                    if(row.get(4).equals("Всього")) return;
-//                    PaymentDetails pd = new PaymentDetails();
-//                    pd.setType(type);
-//                    pd.setPaymentList(paymentList);
-//                    pd.setDate(DATE_FORMAT.parse(row.get(0)));
-//                    pd.setStationCode(Integer.parseInt(row.get(1)));
-//                    pd.setStationName(row.get(2));
-//                    pd.setDocumentNumber(row.get(3));
-//                    pd.setPayment(getLongFromPattern(row.get(4),NUMBER_PATTERN));
-//                    pd.setAdditionalPayment(getLongFromPattern(row.get(5),NUMBER_PATTERN));
-//                    pd.setTaxPayment(getLongFromPattern(row.get(6),NUMBER_PATTERN));
-//                    pd.setTotalPayment(getLongFromPattern(row.get(7),NUMBER_PATTERN));
-//
-//                    paymentList.addDetail(pd);
-//                    row = parseChartRow(iterator.next());
-//
-//                }catch (ParseException e){
-//                    throw new RuntimeException("Ошибка парсинга строки " + row.toString());
-//                }
-//
-//            }
-//        }else if(type.matches())
     }
 
     private List<PaymentDetails> getTransportPayments(String type, Iterator<Element> iterator) {
@@ -330,10 +301,22 @@ public class HtmlDocParser implements DocParser {
     }
 
     private boolean checkSumTest(PaymentList paymentList){
+        long openingBalance = paymentList.getOpeningBalance();
+        long closingBalance = paymentList.getClosingBalance();
+        long payments = paymentList.getPaymentDetailsList()
+                .stream()
+                .filter(paymentDetails -> paymentDetails.getType().equals("Платіжні доручення"))
+                .mapToLong(PaymentDetails::getTotalPayment).sum();
+        long totalPaymentsVsTaxes = paymentList.getPaymentVsTaxes();
+        long totalPaymentsFromList = paymentList.getPaymentDetailsList()
+                .stream()
+                .filter(paymentDetails -> !paymentDetails.getType().equals("Платіжні доручення"))
+                .mapToLong(PaymentDetails::getTotalPayment).sum();
 
+        long checkSum = openingBalance + payments - totalPaymentsFromList;
 
+        return (checkSum == closingBalance) && (totalPaymentsVsTaxes == totalPaymentsFromList);
 
-        return true;
 
     }
 
