@@ -29,3 +29,5 @@
  объединять пути в программе при выдаче файла для загрузки.
  - [ ] Использовать Repository вместо DAO при доступе к БД.
  - [ ] Настроить доступ к БД через спецификацию Specification и JpaSpecificationExecutor.
+ - [ ] Для PaymentList настроить составной Id = paymentCode + List number.
+ 
