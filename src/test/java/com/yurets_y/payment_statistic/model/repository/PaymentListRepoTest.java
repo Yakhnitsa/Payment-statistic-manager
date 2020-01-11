@@ -15,7 +15,7 @@ import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Import(TestConfig.class)
+@Import(RepositoryTestConfig.class)
 @RunWith(SpringRunner.class)
 public class PaymentListRepoTest {
 
@@ -40,11 +40,9 @@ public class PaymentListRepoTest {
 
     @Test
     public void saveToRepoTest() throws IOException {
+        File testFile = getTestFile();
         PaymentList paymentList = docParser.parseFromFile(testFile);
         paymentListRepo.add(paymentList);
-        
-
-        PaymentList listFromRepo = paymentListRepo.getById(paymentList.getId());
 
 
     }

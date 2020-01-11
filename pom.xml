@@ -15,9 +15,14 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java-version>1.8</java-version>
+        <hibernate.version>5.4.0.Final</hibernate.version>
+        <javax.persistence-api.version>2.2</javax.persistence-api.version>
+        <!--<maven-processor-plugin.version>3.3.3</maven-processor-plugin.version>-->
+        <!--<build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>-->
     </properties>
 
     <dependencies>
+        <!--Spring dependencies-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -35,6 +40,31 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
             <version>2.1.8.RELEASE</version>
+        </dependency>
+
+        <!--Database dependencies-->
+        <!--Compile time JPA API-->
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>${javax.persistence-api.version}</version>
+        </dependency>
+
+        <!--Hibernate and database dependencies-->
+
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.4.10.Final</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.200</version>
+            <!--<scope>test</scope>-->
         </dependency>
 
         <!--<dependency>-->
@@ -145,9 +175,6 @@
 
 
     </build>
-
-
-
 
 
 </project>

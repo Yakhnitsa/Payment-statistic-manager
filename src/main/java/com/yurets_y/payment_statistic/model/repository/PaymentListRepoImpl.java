@@ -1,6 +1,10 @@
 package com.yurets_y.payment_statistic.model.repository;
 
 import com.yurets_y.payment_statistic.model.entity.PaymentList;
+import com.yurets_y.payment_statistic.model.entity.PaymentListId;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,6 +13,12 @@ import java.util.List;
 public class PaymentListRepoImpl implements PaymentListRepo {
     @Override
     public void add(PaymentList paymentList) {
+        SessionFactory sessionFactory = SessionFactoryInitializer.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(paymentList);
+        transaction.commit();
+        session.close();
 
     }
 
@@ -23,7 +33,7 @@ public class PaymentListRepoImpl implements PaymentListRepo {
     }
 
     @Override
-    public void getById(Long id) {
+    public void getById(PaymentListId id) {
 
     }
 

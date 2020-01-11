@@ -10,8 +10,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -40,14 +38,14 @@ public class HtmlDocParserTest {
         File file = getTestFile();
         PaymentList paymentList = docParser.parseFromFile(file);
         assertThat(paymentList.getNumber()).isEqualTo(20191219);
-        assertThat(paymentList.getPaymentCode()).isEqualTo(8210260);
+        assertThat(paymentList.getPayerCode()).isEqualTo(8210260);
     }
 
     @Test
     public void parsePaymentCodeTest() throws IOException {
         File file = getTestFile();
         PaymentList paymentList = docParser.parseFromFile(file);
-        assertThat(paymentList.getPaymentCode()).isEqualTo(8210260);
+        assertThat(paymentList.getPayerCode()).isEqualTo(8210260);
     }
     @Test
     public void parseOpeningBalanceTest() throws IOException {

@@ -4,12 +4,19 @@ import java.io.File;
 import java.util.*;
 import java.util.function.Consumer;
 
+import javax.persistence.*;
 
+@Entity
+@IdClass(PaymentListId.class)
+@Table(name = "PAYMENT_LIST")
 public class PaymentList {
     private Long id;
+    @Id
     private int number;
+    @Id
+    private int payerCode;
+
     private Date date;
-    private int paymentCode;
     private int taxCode;
     private String payerName;
     private String contractNumber;
@@ -21,6 +28,7 @@ public class PaymentList {
     private long paymentTaxes;
     private long paymentVsTaxes;
 
+    @OneToMany(mappedBy="paymentList", cascade=CascadeType.ALL, orphanRemoval=true)
     private List<PaymentDetails> paymentDetailsList;
 
     private File backupFile;
@@ -44,12 +52,12 @@ public class PaymentList {
         this.date = date;
     }
 
-    public int getPaymentCode() {
-        return paymentCode;
+    public int getPayerCode() {
+        return payerCode;
     }
 
-    public void setPaymentCode(int paymentCode) {
-        this.paymentCode = paymentCode;
+    public void setPayerCode(int paymentCode) {
+        this.payerCode = paymentCode;
     }
 
     public int getTaxCode() {

@@ -1,9 +1,19 @@
 package com.yurets_y.payment_statistic.model.entity;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
 public class PaymentDetails {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @ManyToOne
+    @JoinColumns( {
+            @JoinColumn(name="number", referencedColumnName="number"),
+            @JoinColumn(name="payerCode", referencedColumnName="payerCode")
+    })
     private PaymentList paymentList;
 
     private String type;

@@ -53,7 +53,7 @@ public class HtmlDocParser implements DocParser {
 
             String paymentCodePattern = "Код платника:(\\d*)";
             if (cellList.size() >= 2 && cellList.get(1).matches(paymentCodePattern)) {
-                paymentList.setPaymentCode((int) getLongFromPattern(cellList.get(1), paymentCodePattern));
+                paymentList.setPayerCode((int) getLongFromPattern(cellList.get(1), paymentCodePattern));
             }
 
             String openBalancePattern = "Сальдо на початок.+:.+?(-?\\d+[,.]\\d+)";
