@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name="PAYMENT_DETAILS")
 public class PaymentDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,6 +18,8 @@ public class PaymentDetails {
     private PaymentList paymentList;
 
     private String type;
+
+    @Temporal(TemporalType.DATE)
     private Date date;
     private int stationCode;
     private String stationName;

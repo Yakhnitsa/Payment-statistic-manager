@@ -48,9 +48,10 @@ public class PaymentListRepoTest {
     }
 
 
+    @Test
+    public void loadFromRepoTest() throws IOException{
 
-
-
+    }
     private File getTestFile(){
         if(testFile != null) return testFile;
         testFile = new File("src/test/resources/testList/20122019_040318.html");

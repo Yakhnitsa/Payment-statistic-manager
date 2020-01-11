@@ -16,6 +16,7 @@ public class PaymentList {
     @Id
     private int payerCode;
 
+    @Temporal(TemporalType.DATE)
     private Date date;
     private int taxCode;
     private String payerName;

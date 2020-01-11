@@ -4,7 +4,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class SessionFactoryInitializer {
-    /** The single instance of hibernate SessionFactory */
+
     private static org.hibernate.SessionFactory sessionFactory;
 
     private SessionFactoryInitializer() {
