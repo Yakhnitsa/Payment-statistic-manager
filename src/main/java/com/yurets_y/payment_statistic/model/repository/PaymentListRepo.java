@@ -12,7 +12,7 @@ public interface PaymentListRepo {
 
     void remove(PaymentList paymentList);
 
-    void getById(PaymentListId id);
+    PaymentList getById(PaymentListId id);
 
     List<PaymentList> getAll();
 
