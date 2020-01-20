@@ -3,7 +3,7 @@ package com.yurets_y.payment_statistic.model.repository;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class SessionFactoryInitializer {
+class SessionFactoryInitializer {
 
     private static org.hibernate.SessionFactory sessionFactory;
 

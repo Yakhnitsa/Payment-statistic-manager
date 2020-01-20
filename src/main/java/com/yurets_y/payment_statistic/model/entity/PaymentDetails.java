@@ -127,4 +127,8 @@ public class PaymentDetails {
     public void setTotalPayment(long totalPayment) {
         this.totalPayment = totalPayment;
     }
+
+    public Long getId() {
+        return id;
+    }
 }

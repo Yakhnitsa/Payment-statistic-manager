@@ -5,6 +5,29 @@
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
                             http://xmlns.jcp.org/xml/ns/persistence_2_1.xsd">
     <!--Настройки persistence для проекта entity_manager_example-->
+    <persistence-unit name="basic-persistence">
+        <!--Прописываем классы, попадающие в маппинк-->
+        <class>com.yurets_y.payment_statistic.model.entity.PaymentList</class>
+        <class>com.yurets_y.payment_statistic.model.entity.PaymentDetails</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:file:./src/main/resources/database/main_db"/>
+            <property name="javax.persistence.jdbc.user" value="sa" />
+            <property name="javax.persistence.jdbc.password" value="" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="show_sql" value="true"/>
+
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+            <!--<property name="hibernate.connection.url" value="jdbc:h2:mem:test"/>-->
+            <!--<property name="connection.username" value="sa"/>-->
+            <!--<property name="connection.password" value="sa"/>-->
+        </properties>
+    </persistence-unit>
+
     <persistence-unit name="test-persistence">
         <!--Прописываем классы, попадающие в маппинк-->
         <class>com.yurets_y.payment_statistic.model.entity.PaymentList</class>
@@ -28,5 +51,23 @@
         </properties>
     </persistence-unit>
 
+    <persistence-unit name="in-memory-test-persistence">
+        <!--Прописываем классы, попадающие в маппинк-->
+        <class>com.yurets_y.payment_statistic.model.entity.PaymentList</class>
+        <class>com.yurets_y.payment_statistic.model.entity.PaymentDetails</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test"/>
+            <property name="javax.persistence.jdbc.user" value="sa" />
+            <property name="javax.persistence.jdbc.password" value="" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="show_sql" value="true"/>
+
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+        </properties>
+    </persistence-unit>
 
 </persistence>

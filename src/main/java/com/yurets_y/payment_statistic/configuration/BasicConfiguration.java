@@ -17,6 +17,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
 import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 @Configuration
 @ComponentScan(basePackages = "com.yurets_y.payment_statistic.model")
@@ -44,7 +47,7 @@ public class BasicConfiguration {
         FXMLLoader rootLoader = new FXMLLoader();
         rootLoader.setLocation(getClass().getResource("/fxml/MainView.fxml"));
         BorderPane rootLayout = rootLoader.load();
-        MainController rootController = (rootLoader.getController());
+        MainController rootController = rootLoader.getController();
         rootController.setRootLayout(rootLayout);
 
         FXMLLoader docPanerLoader = new FXMLLoader();
@@ -63,5 +66,9 @@ public class BasicConfiguration {
         return rootController;
     }
 
+    @Bean
+    public EntityManagerFactory entityManagerFactory(){
+        return Persistence.createEntityManagerFactory("basic-persistence");
+    }
 
 }

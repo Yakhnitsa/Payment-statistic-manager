@@ -6,7 +6,9 @@ import com.yurets_y.payment_statistic.model.entity.PaymentListId;
 import com.yurets_y.payment_statistic.model.parser.DocParser;
 import com.yurets_y.payment_statistic.model.parser.TestConfig;
 import org.hibernate.LazyInitializationException;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
@@ -21,6 +23,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Import(RepositoryTestConfig.class)
 @RunWith(SpringRunner.class)
 public class PaymentListRepoTest {
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Autowired
     private DocParser docParser;
@@ -59,15 +63,22 @@ public class PaymentListRepoTest {
         PaymentList list = paymentListRepo.getById(id);
         assertThat(list.getOpeningBalance()).isEqualTo(428764838);
 
+        assertThat(list.getPaymentDetailsList().size()).isEqualTo(75);
+
+
+
         list.getPaymentDetailsList().size();
         entityManager.close();
     }
 
-    @Test(expected = LazyInitializationException.class)
+    @Test
     public void lazyInitExceptionTest(){
         PaymentListId id = new PaymentListId(8210260,20191219);
         PaymentList list = paymentListRepo.getById(id);
         entityManager.close();
+
+        thrown.expect(LazyInitializationException.class);
+        thrown.expectMessage("failed to lazily initialize a collection of role: com.yurets_y.payment_statistic.model.entity.PaymentList.paymentDetailsList, could not initialize proxy - no Session");
 
         list.getPaymentDetailsList().size();
     }

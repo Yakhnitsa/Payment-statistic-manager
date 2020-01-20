@@ -113,9 +113,6 @@ public class PaymentList {
         return paymentDetailsList;
     }
 
-    public void setPaymentDetailsList(List<PaymentDetails> paymentDetailsList) {
-        this.paymentDetailsList = paymentDetailsList;
-    }
 
     public File getBackupFile() {
         return backupFile;
@@ -130,7 +127,7 @@ public class PaymentList {
     }
 
     public Iterator<PaymentDetails> detailsIterator() {
-        return paymentDetailsList.iterator();
+        return Collections.unmodifiableCollection(paymentDetailsList).iterator();
     }
 
     public boolean addDetail(PaymentDetails paymentDetails) {
@@ -147,7 +144,4 @@ public class PaymentList {
         return paymentDetailsList.addAll(c);
     }
 
-    public void forEach(Consumer<? super PaymentDetails> action) {
-        paymentDetailsList.forEach(action);
-    }
 }
