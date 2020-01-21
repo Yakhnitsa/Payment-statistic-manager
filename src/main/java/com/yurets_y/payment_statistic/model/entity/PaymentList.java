@@ -30,12 +30,12 @@ public class PaymentList {
     private long paymentVsTaxes;
 
     @OneToMany(mappedBy="paymentList", cascade=CascadeType.ALL, orphanRemoval=true)
-    private List<PaymentDetails> paymentDetailsList;
+    private List<PaymentDetails> paymentDetailsList = new ArrayList<>();
 
+    @Transient
     private File backupFile;
-    {
-        paymentDetailsList = new ArrayList<>();
-    }
+
+    private String backupFilePath;
 
     public int getNumber() {
         return number;
@@ -144,4 +144,11 @@ public class PaymentList {
         return paymentDetailsList.addAll(c);
     }
 
+    public String getBackupFilePath() {
+        return backupFilePath;
+    }
+
+    public void setBackupFilePath(String backupFilePath) {
+        this.backupFilePath = backupFilePath;
+    }
 }

@@ -11,10 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.*;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
@@ -25,6 +22,7 @@ import javax.persistence.Persistence;
 @ComponentScan(basePackages = "com.yurets_y.payment_statistic.model")
 @ComponentScan(basePackages = "com.yurets_y.payment_statistic.controller")
 @ImportResource(locations = {"classpath:springconfig/app-context.xml"})
+@PropertySource("classpath:properties.properties")
 public class BasicConfiguration {
 
     @Resource(name="documentSaverBasic")

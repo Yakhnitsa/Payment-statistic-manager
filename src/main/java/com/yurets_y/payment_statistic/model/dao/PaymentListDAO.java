@@ -2,10 +2,16 @@ package com.yurets_y.payment_statistic.model.dao;
 
 import com.yurets_y.payment_statistic.model.entity.PaymentList;
 import com.yurets_y.payment_statistic.model.entity.PaymentListId;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TemporalType;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +22,9 @@ public class PaymentListDAO {
 
     private EntityManager em;
 
+    @Value("${model.dao.backup-path}")
+    private String backupDir;
+
     public PaymentListDAO(EntityManagerFactory entityManager) {
         this.emf = entityManager;
     }
@@ -23,6 +32,7 @@ public class PaymentListDAO {
     public void add(PaymentList paymentList) {
         openEntityManager();
         beginTransaction();
+        saveBackupFile(paymentList);
         em.persist(paymentList);
         commitTransaction();
         closeEntityManager();
@@ -50,6 +60,7 @@ public class PaymentListDAO {
         PaymentList listFromRepo = em.find(PaymentList.class, id);
         commitTransaction();
         closeEntityManager();
+        loadBackupFile(listFromRepo);
         return listFromRepo;
 
     }
@@ -58,6 +69,7 @@ public class PaymentListDAO {
         openEntityManager();
         beginTransaction();
         List<PaymentList> paymentLists = em.createQuery("from PaymentList", PaymentList.class).getResultList();
+        paymentLists.forEach(this::loadBackupFile);
         commitTransaction();
         closeEntityManager();
         return paymentLists;
@@ -67,17 +79,20 @@ public class PaymentListDAO {
         openEntityManager();
         beginTransaction();
         List<PaymentList> sortedList = em
-                .createQuery("select list from PaymentList list where list.date between :dateFrom and :dateUntil",PaymentList.class)
-                .setParameter("dateFrom",from)
-                .setParameter("dateUntil", until)
+                .createQuery("FROM PaymentList WHERE date BETWEEN :dateFrom AND :dateUntil", PaymentList.class)
+                .setParameter("dateFrom",from, TemporalType.DATE)
+                .setParameter("dateUntil", until, TemporalType.DATE)
                 .getResultList();
+//        List<PaymentList> sortedList = em.createQuery("from PaymentList",PaymentList.class).getResultList();
+
+        sortedList.forEach(this::loadBackupFile);
         commitTransaction();
         closeEntityManager();
         return sortedList;
     }
 
     private void openEntityManager(){
-        if(!this.em.isOpen()){
+        if(em == null || !em.isOpen()){
             this.em = emf.createEntityManager();
         }
     }
@@ -93,5 +108,30 @@ public class PaymentListDAO {
 
     private void commitTransaction() {
         em.getTransaction().commit();
+    }
+
+    private void saveBackupFile(PaymentList paymentList){
+        String fileExtension = paymentList.getBackupFile().getName();
+        fileExtension = fileExtension.substring(fileExtension.lastIndexOf("."));
+        String fileName = paymentList.getPayerCode() + "_" + paymentList.getNumber() + fileExtension;
+        File backupFile = new File(backupDir + File.separator + fileName);
+        try {
+            Files.copy(paymentList.getBackupFile().toPath(),
+                    backupFile.toPath(),
+                    StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Ошибка при сохранении файла " + fileName);
+        }
+        paymentList.setBackupFilePath(fileName);
+
+    }
+
+    private void loadBackupFile(PaymentList paymentList){
+        File file = new File(backupDir + File.separator + paymentList.getBackupFilePath());
+        if(!file.exists()){
+            throw new RuntimeException("Ошибка загрузки файла перечня " + file);
+        }
+        paymentList.setBackupFile(file);
     }
 }

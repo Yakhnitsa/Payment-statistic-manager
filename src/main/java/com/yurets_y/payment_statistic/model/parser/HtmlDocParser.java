@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 public class HtmlDocParser implements DocParser {
     private final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy");
     private final String NUMBER_PATTERN = "(-?\\d+[,.]\\d+)";
-    private final String LIST_DATE_PATTERN = "\\d{2}\\.\\d{2}\\.\\d{2}";
+    private final String LIST_DATE_PATTERN = "\\d{2}\\.\\d{2}\\.\\d{4}";
     private final String LIST_NUMBER_PATTERN = "\\d{8}";
 
     @Override
