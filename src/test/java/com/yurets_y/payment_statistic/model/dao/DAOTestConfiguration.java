@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.annotation.AliasFor;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
@@ -33,34 +34,46 @@ public class DAOTestConfiguration {
     private String testFileLocation;
 
 
-    @Bean
-    public EntityManagerFactory entityManagerFactory(){
+    @Bean("immutable-test-db")
+    public EntityManagerFactory entityManagerFactoryImmutable() {
+        return Persistence.createEntityManagerFactory("immutable-test-persistence");
+    }
+
+    @Bean(name = {"in-memory-test-db", "defaultEMF"})
+    public EntityManagerFactory entityManagerFactoryInMemory() {
         return Persistence.createEntityManagerFactory("in-memory-test-persistence");
     }
 
-    @Bean
-    public PaymentListDAO paymentListDAO(){
-        return new PaymentListDAO(entityManagerFactory());
+    @Bean("dao-vs-immutable-db")
+    public PaymentListDAO paymentListDAOImmutable() {
+        return new PaymentListDAO(entityManagerFactoryImmutable());
     }
 
-    @Bean(name="testFile")
+    @Bean("dao-vs-in-memory-db")
+    public PaymentListDAO paymentListDAOInMemory() {
+        return new PaymentListDAO(entityManagerFactoryInMemory());
+    }
+
+
+    @Bean(name = "testFile")
     public File testFile() {
         File file = new File(testFileLocation);
-        if(!file.exists()) throw new RuntimeException("Тестовый файл не найден");
+        if (!file.exists()) throw new RuntimeException("Тестовый файл не найден");
         return file;
     }
 
-    @Bean(name="testDir")
+    @Bean(name = "testDir")
     public File testDir() {
 
         File dir = new File(testDirectoryLocation);
-        if(!dir.exists() && !dir.isDirectory()) throw new RuntimeException("Путь не является директорией, или не существует");
+        if (!dir.exists() && !dir.isDirectory())
+            throw new RuntimeException("Путь не является директорией, или не существует");
 
         return dir;
     }
 
-    @Bean(name="backupDir")
-    public File backupDir(){
+    @Bean(name = "backupDir")
+    public File backupDir() {
         return new File(backupDir);
     }
 

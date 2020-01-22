@@ -1,7 +1,9 @@
 package com.yurets_y.payment_statistic.model.dao;
 
+import com.yurets_y.payment_statistic.model.entity.PaymentDetails;
 import com.yurets_y.payment_statistic.model.entity.PaymentList;
 import com.yurets_y.payment_statistic.model.entity.PaymentListId;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,7 @@ import java.util.List;
 
 @Service("paymentListDao")
 public class PaymentListDAO {
+
     private EntityManagerFactory emf;
 
     private EntityManager em;
@@ -25,7 +28,8 @@ public class PaymentListDAO {
     @Value("${model.dao.backup-path}")
     private String backupDir;
 
-    public PaymentListDAO(EntityManagerFactory entityManager) {
+
+    public PaymentListDAO(@Qualifier("defaultEMF") EntityManagerFactory entityManager) {
         this.emf = entityManager;
     }
 
@@ -91,6 +95,30 @@ public class PaymentListDAO {
         return sortedList;
     }
 
+    public List<PaymentDetails> getPaymentDetailsByStationCode(int stationCode){
+        openEntityManager();
+        beginTransaction();
+        List<PaymentDetails> list = em
+                .createQuery("FROM PaymentDetails WHERE stationCode = :stationCode",PaymentDetails.class)
+                .setParameter("stationCode",stationCode)
+                .getResultList();
+        commitTransaction();
+        closeEntityManager();
+        return list;
+    }
+    public List<PaymentDetails> getPaymentDetailsByDate(Date from, Date until){
+        openEntityManager();
+        beginTransaction();
+        List<PaymentDetails> list = em
+                .createQuery("FROM PaymentDetails WHERE date BETWEEN :dateFrom and :dateUntil",PaymentDetails.class)
+                .setParameter("dateFrom",from)
+                .setParameter("dateUntil",until)
+                .getResultList();
+        commitTransaction();
+        closeEntityManager();
+        return list;
+    }
+
     private void openEntityManager(){
         if(em == null || !em.isOpen()){
             this.em = emf.createEntityManager();
@@ -134,4 +162,6 @@ public class PaymentListDAO {
         }
         paymentList.setBackupFile(file);
     }
+
+
 }

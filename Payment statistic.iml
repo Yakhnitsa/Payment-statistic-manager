@@ -27,6 +27,7 @@
         <setting name="provider-name" value="" />
         <datasource-mapping>
           <factory-entry name="basic-persistence" />
+          <factory-entry name="immutable-test-persistence" />
           <factory-entry name="in-memory-test-persistence" />
           <factory-entry name="test-persistence" />
         </datasource-mapping>

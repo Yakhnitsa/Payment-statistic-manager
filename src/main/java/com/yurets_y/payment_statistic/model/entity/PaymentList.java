@@ -12,8 +12,10 @@ import javax.persistence.*;
 public class PaymentList {
     private Long id;
     @Id
+    @Column(updatable = false)
     private int number;
     @Id
+    @Column(updatable = false)
     private int payerCode;
 
     @Temporal(TemporalType.DATE)
@@ -41,7 +43,9 @@ public class PaymentList {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(int number) throws Exception{
+        if(this.number != 0)
+            throw new Exception("Запрет повторного изменения поля, составляющего ID");
         this.number = number;
     }
 
@@ -57,7 +61,9 @@ public class PaymentList {
         return payerCode;
     }
 
-    public void setPayerCode(int paymentCode) {
+    public void setPayerCode(int paymentCode) throws Exception{
+        if(this.payerCode != 0)
+            throw new Exception("Запрет повторного изменения поля, составляющего ID");
         this.payerCode = paymentCode;
     }
 

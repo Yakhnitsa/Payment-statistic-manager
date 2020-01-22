@@ -47,13 +47,21 @@ public class HtmlDocParser implements DocParser {
             }
             String first = cellList.get(0);
             if (first.contains("Перелік")) {
-                paymentList.setNumber(getListNumb(first));
+                try {
+                    paymentList.setNumber(getListNumb(first));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 paymentList.setDate(getListDate(first));
             }
 
             String paymentCodePattern = "Код платника:(\\d*)";
             if (cellList.size() >= 2 && cellList.get(1).matches(paymentCodePattern)) {
-                paymentList.setPayerCode((int) getLongFromPattern(cellList.get(1), paymentCodePattern));
+                try {
+                    paymentList.setPayerCode((int) getLongFromPattern(cellList.get(1), paymentCodePattern));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             String openBalancePattern = "Сальдо на початок.+:.+?(-?\\d+[,.]\\d+)";

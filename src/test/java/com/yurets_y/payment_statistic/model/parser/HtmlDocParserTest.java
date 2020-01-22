@@ -42,12 +42,6 @@ public class HtmlDocParserTest {
     }
 
     @Test
-    public void parsePaymentCodeTest() throws IOException {
-        File file = getTestFile();
-        PaymentList paymentList = docParser.parseFromFile(file);
-        assertThat(paymentList.getPayerCode()).isEqualTo(8210260);
-    }
-    @Test
     public void parseOpeningBalanceTest() throws IOException {
         File file = getTestFile();
         PaymentList paymentList = docParser.parseFromFile(file);
